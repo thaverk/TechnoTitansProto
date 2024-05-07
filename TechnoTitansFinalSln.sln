@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnoTitansFinal", "TechnoTitansFinal\TechnoTitansFinal.csproj", "{4A1A10F6-BD99-445F-AB3C-60F7016E065F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1A10F6-BD99-445F-AB3C-60F7016E065F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {063AE0B4-1FCD-424E-8CDF-2E1D17B53558}
+	EndGlobalSection
+EndGlobal
