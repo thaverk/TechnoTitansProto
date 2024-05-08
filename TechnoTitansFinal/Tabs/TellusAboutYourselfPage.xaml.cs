@@ -6,8 +6,8 @@ namespace TechnoTitansFinal.Tabs;
 
 public partial class TellusAboutYourselfPage : ContentPage
 {
-	private LocalDb db;
-    private User _user;
+	public LocalDb db;
+    public User _user;
     public SQLiteConnection conn;
     public User user
     {
@@ -17,38 +17,44 @@ public partial class TellusAboutYourselfPage : ContentPage
 
     public TellusAboutYourselfPage()
 	{
-		db = new LocalDb();
+		
+        db = new LocalDb();
+        Routing.RegisterRoute("AthleteSignUp", typeof(AthleteSignUp));
+        Routing.RegisterRoute("CoachSignUp", typeof(CoachSignUp));
+        Routing.RegisterRoute("ProviderSignUp", typeof(ProviderSignUp));
         InitializeComponent();
        
     }
 
     private async void Athlete_Clicked(object sender, EventArgs e)
     {
-        Routing.RegisterRoute("AthleteSignUp", typeof(AthleteSignUp));
+        
         user=new User()
         {
             userType = 1
 
         };
         db.InsertClient(_user);
-        await Shell.Current.GoToAsync("AthleteSignUp");
+       
+        await Navigation.PushAsync(new AthleteSignUp());
 
     }
 
     private async void Coach_Clicked(object sender, EventArgs e)
     {
-        Routing.RegisterRoute("CoachSignUp", typeof(CoachSignUp));
+       
         user = new User()
         {
             userType = 2
 
-        };
+        }; 
         db.InsertClient(_user);
-        await Shell.Current.GoToAsync("CoachSignUp");
+        await Shell.Current.GoToAsync("CoachSignUp",true);
+        await Navigation.PushAsync(new CoachSignUp());
     }
     private async void Provider_Clicked(object sender, EventArgs e)
     {
-        Routing.RegisterRoute("ProviderSignUp", typeof(ProviderSignUp));
+        
         await Shell.Current.GoToAsync("ProviderSignUp");
     }
 

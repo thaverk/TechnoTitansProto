@@ -12,7 +12,7 @@ namespace TechnoTitansFinal.Models
         [ForeignKey(typeof(ProviderInjury))]
         public string treatmentActionProviderInjury { get; set; }
 
-        public List<string>? treatmentActionStepAction { get; set; }
+        public List<string> treatmentActionStepAction { get; set; }
         public int? treatmentActionStepOrder { get; set; }
 
         [ForeignKey(typeof(TreatmentFrequency))]

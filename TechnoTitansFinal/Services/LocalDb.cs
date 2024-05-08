@@ -40,7 +40,7 @@ namespace TechnoTitansFinal.Services
             _dbConnection.CreateTable<Provider>(); //K //created a dummy provider
             _dbConnection.CreateTable<ServiceType>(); //Created a dummy service type
             _dbConnection.CreateTable<Treatment>(); //K? //Done Seeding
-            _dbConnection.CreateTable<TreatmentAction>(); //K //done seeding
+            //_dbConnection.CreateTable<TreatmentAction>(); //K //done seeding
             _dbConnection.CreateTable<TreatmentDashboard>(); //K //Need help on displaying the data
             _dbConnection.CreateTable<TreatmentFrequency>(); //K //Done Seeding
             _dbConnection.CreateTable<TreatmentType>(); //Created a dummy treatment type //
@@ -178,8 +178,8 @@ namespace TechnoTitansFinal.Services
                     providerInjuryServiceProvider = 1
                 };
                 _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+               // treatment.treatmentInjury.Add(injury);
+               // provider.serviceProviderInjuries.Add(injury);
 
                 injury = new()
                 {
@@ -189,8 +189,8 @@ namespace TechnoTitansFinal.Services
                     providerInjuryServiceProvider = 1
                 };
                 _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+                //treatment.treatmentInjury.Add(injury);
+                //provider.serviceProviderInjuries.Add(injury);
 
                 injury = new()
                 {
@@ -292,10 +292,10 @@ namespace TechnoTitansFinal.Services
                action = new()
                {
                     treatmentActionProviderInjury = "Sprained Ankle",
-                    treatmentActionStepAction = new List<string> { "Rest your ankle and do not walk much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury","Keep the foot elevated while sitting or lying down" },
+                    treatmentActionStepAction = { "Rest your ankle and do not walk much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury","Keep the foot elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                    treatmentActionTreatment = 1
+                    
                 };
                 _dbConnection.Insert(action);
 
@@ -305,20 +305,20 @@ namespace TechnoTitansFinal.Services
                 action = new()
                 {
                     treatmentActionProviderInjury = "Broken Wrist",
-                    treatmentActionStepAction = new List<string> { "Rest your wrist and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the wrist elevated while sitting or lying down" },
+                    treatmentActionStepAction =  { "Rest your wrist and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the wrist elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                    treatmentActionTreatment = 2
+                   
                 };
                 _dbConnection.Insert(action);
 
                 action =new()
                 {
                     treatmentActionProviderInjury = "Neck Strain",
-                    treatmentActionStepAction = new List<string> { "Rest your neck and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the neck elevated while sitting or lying down" },
+                    treatmentActionStepAction = { "Rest your neck and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the neck elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                    treatmentActionTreatment = 3
+                    
                 };
                 _dbConnection.Insert(action);
 

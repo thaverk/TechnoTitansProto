@@ -54,7 +54,7 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Dashboard" Icon="dashboard.png"
             Style="{StaticResource BaseStyle}"
-    ContentTemplate="{DataTemplate local:Dashboard}"
+    ContentTemplate="{DataTemplate local:AthleteDashboard}"
     Route="Injuries" />
 
         <ShellContent
@@ -75,33 +75,6 @@
 
     </FlyoutItem>
 
-    <TabBar>
-        <Tab Title="EXPLORE"
-             Icon="baseball_cap.png">
-
-            <ShellContent
-                Title="Dashboard"
-                Route="Dashboard" />
-
-        </Tab>
-
-        <Tab>
-            <ShellContent
-                Title="LIBRARY"
-                Icon="search.png"
-                 Route="Tab1"
-                            />
-        </Tab>
-
-        <Tab>
-            <ShellContent
-                Title="List of Providers"
-                Icon="shopping_bag.png"
-                Route="Tab2"
-                />
-        </Tab>
-    </TabBar>
-
-
+    
 
 </Shell>

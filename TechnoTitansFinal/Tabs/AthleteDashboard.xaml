@@ -2,11 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechnoTitansFinal.Tabs.AthleteDashboard"
+             xmlns:local="clr-namespace:TechnoTitansFinal.Tabs"
+             x:DataType="local:AthleteDashboard"
              Title="AthleteDashboard">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Athlete Profile Page" FontSize="Large" HorizontalOptions="Center"/>
+        <Label Text="Name" FontSize="Header" HorizontalOptions="Start" />
+        <Label Text="{Binding user.userName}" FontSize="Header" HorizontalOptions="Start" />
+        <Label Text="Surname" FontSize="Header" HorizontalOptions="Start" />
+        <Label Text="{Binding user.userSurname}" FontSize="Body" HorizontalOptions="Start" />
+        <Label Text="Email" FontSize="Header" HorizontalOptions="Start" />
+        <Label Text="{Binding user.userEmail}" FontSize="Body" HorizontalOptions="Start" />
+        <Label Text="Gender/Sex" FontSize="Header" HorizontalOptions="Start" />
+        <Label Text="{Binding user.userGender}" FontSize="Body" HorizontalOptions="Start" />
+
     </VerticalStackLayout>
 </ContentPage>
