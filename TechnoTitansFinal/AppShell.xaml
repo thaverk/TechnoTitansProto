@@ -75,27 +75,33 @@
 
     </FlyoutItem>
 
-    <!--<TabBar>
+    <TabBar>
         <Tab Title="EXPLORE"
              Icon="baseball_cap.png">
 
             <ShellContent
                 Title="Dashboard"
-                ContentTemplate="{DataTemplate local:Dashboard}" />
+                Route="Dashboard" />
 
         </Tab>
-        
-        <ShellContent
-            Title="LIBRARY"
-            Icon="search.png"
-            ContentTemplate="{DataTemplate local:Injuries}"/>
-        
-        <ShellContent
-            Title="TREATMENT PLAN"
-            Icon="shopping_bag.png"
-            ContentTemplate="{DataTemplate local:Treatment}"/>
-    </TabBar>-->
 
-    
+        <Tab>
+            <ShellContent
+                Title="LIBRARY"
+                Icon="search.png"
+                 Route="Tab1"
+                            />
+        </Tab>
+
+        <Tab>
+            <ShellContent
+                Title="List of Providers"
+                Icon="shopping_bag.png"
+                Route="Tab2"
+                />
+        </Tab>
+    </TabBar>
+
+
 
 </Shell>

@@ -1,4 +1,6 @@
-﻿namespace TechnoTitansFinal
+﻿using TechnoTitansFinal.Tabs;
+
+namespace TechnoTitansFinal
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new TellusAboutYourselfPage();
         }
     }
 }

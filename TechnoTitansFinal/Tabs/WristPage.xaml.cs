@@ -1,8 +1,8 @@
 namespace TechnoTitansFinal.Tabs;
 
-public partial class LandingPage : TabbedPage
+public partial class WristPage : ContentPage
 {
-	public LandingPage()
+	public WristPage()
 	{
 		InitializeComponent();
 	}

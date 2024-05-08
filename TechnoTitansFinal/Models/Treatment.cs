@@ -27,6 +27,12 @@ namespace TechnoTitansFinal.Models
         [ForeignKey(typeof(Provider))]
         public int treatmentServiceProvider { get; set; }
 
+        [ForeignKey(typeof(BodyPart))]
+        public int treatmentBodyPart { get; set; }
+
+        [ForeignKey(typeof(TreatmentAction))]
+        public int treatmentAction { get; set; }
+
 
     }
 }

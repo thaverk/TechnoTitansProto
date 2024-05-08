@@ -1,8 +1,8 @@
 namespace TechnoTitansFinal.Tabs;
 
-public partial class Dashboard : ContentPage
+public partial class AnklePage : ContentPage
 {
-	public Dashboard()
+	public AnklePage()
 	{
 		InitializeComponent();
 	}

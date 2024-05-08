@@ -113,7 +113,8 @@ namespace TechnoTitansFinal.Services
             {    
                 Club club = new()
                 {
-                    clubName = "The Club", clubDescription = "It's the Club", clubLocation = 1
+                    clubName = "Cape Town Soccer", clubDescription = "Soccer club In The Heart Of Cape Town", clubLocation = 1,
+                   
                 };
                 _dbConnection.Insert(club);
             }
@@ -243,9 +244,9 @@ namespace TechnoTitansFinal.Services
                     treatmentName = "Sprained ankle Treatment",
                     treatmentDescription = "It 2 day treatment plan that will help you recover and heal the sprained ankle",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1
-
-                };
+                    treatmentServiceProvider = 1,
+                     treatmentAction = 1
+                 };
 
                 _dbConnection.Insert(treatment);
                 provider.serviceProviderTreatments.Add(treatment);
@@ -255,7 +256,8 @@ namespace TechnoTitansFinal.Services
                     treatmentName = "Broken Wrist Treatment",
                     treatmentDescription = "It 3 day treatment plan that will help you recover and heal the broken wrist",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1
+                    treatmentServiceProvider = 1,
+                    treatmentAction = 2
 
                 };
                 _dbConnection.Insert(treatment);
@@ -266,9 +268,9 @@ namespace TechnoTitansFinal.Services
                     treatmentName = "Neck Strain Treatment",
                     treatmentDescription = "It 4 day treatment plan that will help you recover and heal the neck strain",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1
-
-                };
+                    treatmentServiceProvider = 1,
+                    treatmentAction = 3
+               };
                 _dbConnection.Insert(treatment);
                 provider.serviceProviderTreatments.Add(treatment);
 
@@ -277,11 +279,15 @@ namespace TechnoTitansFinal.Services
                     treatmentName = "Back Pain Treatment",
                     treatmentDescription = "It 5 day treatment plan that will help you recover and heal the back pain",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1
+                    treatmentServiceProvider = 1,
+                   treatmentAction = 4
 
-                };
+               };
+
+
                 _dbConnection.Insert(treatment);
                 provider.serviceProviderTreatments.Add(treatment);
+                
 
                action = new()
                {
@@ -292,9 +298,30 @@ namespace TechnoTitansFinal.Services
                     treatmentActionTreatment = 1
                 };
                 _dbConnection.Insert(action);
+
                 treatment.treatmentInjury.Add(injury);
                 provider.serviceProviderInjuries.Add(injury);
-              
+
+                action = new()
+                {
+                    treatmentActionProviderInjury = "Broken Wrist",
+                    treatmentActionStepAction = new List<string> { "Rest your wrist and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the wrist elevated while sitting or lying down" },
+                    treatmentActionStepOrder = 1,
+                    treatmentActionFrequency = 1,
+                    treatmentActionTreatment = 2
+                };
+                _dbConnection.Insert(action);
+
+                action =new()
+                {
+                    treatmentActionProviderInjury = "Neck Strain",
+                    treatmentActionStepAction = new List<string> { "Rest your neck and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the neck elevated while sitting or lying down" },
+                    treatmentActionStepOrder = 1,
+                    treatmentActionFrequency = 1,
+                    treatmentActionTreatment = 3
+                };
+                _dbConnection.Insert(action);
+
                 frequency = new()
                 {
                     treatmentFreqDescription = "Daily",
@@ -315,6 +342,12 @@ namespace TechnoTitansFinal.Services
 
                 };
                 _dbConnection.Insert(frequency);
+            
+                
+                
+            
+            
+            
             }
 
            
@@ -330,7 +363,7 @@ namespace TechnoTitansFinal.Services
         
         
         }
-
+            
         public Sport GetSportById(int id)
         {
             Sport sport = _dbConnection.Table<Sport>().Where(x => x.sportID == id).FirstOrDefault();
@@ -350,11 +383,13 @@ namespace TechnoTitansFinal.Services
             return user;
         }
 
-
+        public void InsertClient(User user)
+        {
+            _dbConnection.Insert(user);
+        }   
         public void UpdateClient(User user)
         {
 
-            SeedClient();
             _dbConnection.Update(user);
         }
 

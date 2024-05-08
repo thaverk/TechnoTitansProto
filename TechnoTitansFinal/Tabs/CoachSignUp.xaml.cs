@@ -1,8 +1,8 @@
 namespace TechnoTitansFinal.Tabs;
 
-public partial class Injuries : ContentPage
+public partial class CoachSignUp : ContentPage
 {
-	public Injuries()
+	public CoachSignUp()
 	{
 		InitializeComponent();
 	}
