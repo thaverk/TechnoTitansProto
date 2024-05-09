@@ -5,20 +5,25 @@ namespace TechnoTitansFinal.Tabs;
 
 public partial class AthleteDashboard : ContentPage
 {
-	public User _user;
-	public User user
+	public LocalDb db;
+    public User user;
+	public User User
 	{
-        get { return _user; }
+        get { return user; }
         set
 		{
-            _user = value;
+            user = value;
             OnPropertyChanged();
         }
     }
-	public LocalDb db;
+	
 	
 	public AthleteDashboard()
 	{
-		InitializeComponent();
-	}
+		db.GetUserByemail(user.userEmail);
+        InitializeComponent();
+        BindingContext = this;
+        OnPropertyChanged();
+    }
+    
 }

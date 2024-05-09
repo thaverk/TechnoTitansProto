@@ -5,30 +5,42 @@ namespace TechnoTitansFinal.Tabs;
 
 public partial class AthleteSignUp : ContentPage
 {
-	public LocalDb db;
-    public User _user;
-    public User user
+	 public User user;
+    public LocalDb db;
+    public User User
     {
-        get { return _user; }
-        set
-        {
-            _user = value;
-            OnPropertyChanged();
-        }
+        get { return user; }
+        set { user = value;OnPropertyChanged(); }
     }
-	public AthleteSignUp()
+    public AthleteSignUp()
 	{
+        Routing.RegisterRoute(nameof(AthleteDashboard), typeof(AthleteDashboard));
         db = new LocalDb();
         InitializeComponent();
-	}
-
-	public void SignUp_Clicked(object sender, EventArgs e)
-    {
-        db.UpdateClient(user);
-        Shell.Current.GoToAsync("//AthleteDashboard");
+        BindingContext = this;
+        OnPropertyChanged();
+        
     }
 
+	public async void SignUp_Clicked(object sender, EventArgs e)
+    {
 
+        user = new User();
+        user.userName = AthleteName.Text;
+        user.userSurname = AthleteSurname.Text;
+        user.userGender = AthleteGender.Text;
+        user.userEmail = AthleteEmail.Text;
+        user.userPassword = AthletePassword.Text;
+        user.userID = 1;
+
+        db.UpdateClient(user);
+
+    }
+
+    public async void NextPage_clicked(object sender, EventArgs e)
+    {
+          await Shell.Current.GoToAsync(nameof(AthleteDashboard));
+    }
 
 
 

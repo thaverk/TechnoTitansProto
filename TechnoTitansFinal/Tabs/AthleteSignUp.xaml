@@ -10,12 +10,13 @@
             Text="Tell us about yourself, Athlete"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
-        <Entry Placeholder="Name" Text="{Binding user.userName}" />
-        <Entry Placeholder="Surname" Text="{Binding user.userSurname}"/>        
-        <Entry Placeholder="Gender/Sex" Text="{Binding user.userGender}"/>
-        <Entry Placeholder="Email" Text="{Binding user.userEmail}"/>
-        <Entry Placeholder="Password" Text="{Binding user.userPassword}" IsPassword="True"/>
+
+        <Entry Placeholder="Name" BindingContext="{Binding User.userName}" x:Name="AthleteName"/>
+        <Entry Placeholder="Surname" BindingContext="{Binding User.userSurname}" x:Name="AthleteSurname" />        
+        <Entry Placeholder="Gender/Sex" BindingContext="{Binding User.userGender}" x:Name="AthleteGender"/>
+        <Entry Placeholder="Email" BindingContext="{Binding User.userEmail} " x:Name="AthleteEmail"/>
+        <Entry Placeholder="Password" BindingContext="{Binding User.userPassword}" IsPassword="True" x:Name="AthletePassword"/>
         <Button Text="Sign Up" Clicked="SignUp_Clicked"/>
+        <Button Text="Next Page" Clicked="NextPage_clicked"/>
     </VerticalStackLayout>
 </ContentPage>

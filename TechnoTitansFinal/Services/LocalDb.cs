@@ -138,23 +138,10 @@ namespace TechnoTitansFinal.Services
                 _dbConnection.Insert(userType);
             }
 
-            if (_dbConnection.Table<User>().Count() == 0)
-            {
-                User user = new()
-                {
-                    userName = "John", 
-                    userSurname = "Doe", 
-                    userGender = "Male", 
-                    userPhoneNumber = "0115551234", 
-                    userEmail = "email@website.com", 
-                    userDateOfBirth = new DateTime(1970,01,01), 
-                    userPassword = "Pa$$word1!",
-                    userType = 1, 
-                    userClub = 1
-                };
-                _dbConnection.Insert(user);
-            }
+            
 
+           
+            
             if (_dbConnection.Table<Sport>().Count() < sports.Count)
             {
                 foreach (var x in sports)
@@ -170,60 +157,7 @@ namespace TechnoTitansFinal.Services
 
             if (_dbConnection.Table<ProviderInjury>().Count() == 0)
             {
-                injury = new()
-                {
-                    providerInjuryName = "Sprained Ankle",
-                    providerInjuryDescription = "A sprained ankle is an injury that occurs when you roll, twist or turn your ankle in an awkward way. This can stretch or tear the tough bands of tissue (ligaments) that help hold your ankle bones together.",
-                    providerInjuryBodyPart = 1,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-               // treatment.treatmentInjury.Add(injury);
-               // provider.serviceProviderInjuries.Add(injury);
-
-                injury = new()
-                {
-                    providerInjuryName = "Broken Wrist",
-                    providerInjuryDescription = "A broken wrist is a break or crack in one or more of the bones of your wrist. The most common fractures involve the radius and ulna bones in your forearm.",
-                    providerInjuryBodyPart = 2,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-                //treatment.treatmentInjury.Add(injury);
-                //provider.serviceProviderInjuries.Add(injury);
-
-                injury = new()
-                {
-                    providerInjuryName = "Neck Strain",
-                    providerInjuryDescription = "A neck strain is an injury to the muscles and tendons that support and move the head and neck. A neck strain is often caused by an accident or trauma, such as a car crash or a fall.",
-                    providerInjuryBodyPart = 3,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
-
-                injury = new()
-                {
-                    providerInjuryName = "Back Pain",
-                    providerInjuryDescription = "Back pain is one of the most common medical problems, affecting 8 out of 10 people at some point during their lives. Back pain can range from a dull, constant ache to a sudden, sharp pain.",
-                    providerInjuryBodyPart = 4,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
-
-                injury = new()
-                {
-                    providerInjuryName = "Knee Pain",
-                    providerInjuryDescription = "Knee pain is a common complaint that affects people of all ages. Knee pain may be the result of an injury, such as a ruptured ligament or torn cartilage. Medical conditions — including arthritis, gout and infections — also can cause knee pain.",
-                    providerInjuryBodyPart = 5,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+                
             
 
                 provider = new()
@@ -299,9 +233,7 @@ namespace TechnoTitansFinal.Services
                 };
                 _dbConnection.Insert(action);
 
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
-
+               
                 action = new()
                 {
                     treatmentActionProviderInjury = "Broken Wrist",
@@ -342,26 +274,69 @@ namespace TechnoTitansFinal.Services
 
                 };
                 _dbConnection.Insert(frequency);
-            
-                
-                
-            
-            
-            
+
+
+                injury = new()
+                {
+                    providerInjuryName = "Sprained Ankle",
+                    providerInjuryDescription = "A sprained ankle is an injury that occurs when you roll, twist or turn your ankle in an awkward way. This can stretch or tear the tough bands of tissue (ligaments) that help hold your ankle bones together.",
+                    providerInjuryBodyPart = 1,
+                    providerInjuryServiceProvider = 1
+                };
+                _dbConnection.Insert(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
+
+                injury = new()
+                {
+                    providerInjuryName = "Broken Wrist",
+                    providerInjuryDescription = "A broken wrist is a break or crack in one or more of the bones of your wrist. The most common fractures involve the radius and ulna bones in your forearm.",
+                    providerInjuryBodyPart = 2,
+                    providerInjuryServiceProvider = 1
+                };
+                _dbConnection.Insert(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
+
+                injury = new()
+                {
+                    providerInjuryName = "Neck Strain",
+                    providerInjuryDescription = "A neck strain is an injury to the muscles and tendons that support and move the head and neck. A neck strain is often caused by an accident or trauma, such as a car crash or a fall.",
+                    providerInjuryBodyPart = 3,
+                    providerInjuryServiceProvider = 1
+                };
+                _dbConnection.Insert(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
+
+                injury = new()
+                {
+                    providerInjuryName = "Back Pain",
+                    providerInjuryDescription = "Back pain is one of the most common medical problems, affecting 8 out of 10 people at some point during their lives. Back pain can range from a dull, constant ache to a sudden, sharp pain.",
+                    providerInjuryBodyPart = 4,
+                    providerInjuryServiceProvider = 1
+                };
+                _dbConnection.Insert(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
+
+                injury = new()
+                {
+                    providerInjuryName = "Knee Pain",
+                    providerInjuryDescription = "Knee pain is a common complaint that affects people of all ages. Knee pain may be the result of an injury, such as a ruptured ligament or torn cartilage. Medical conditions — including arthritis, gout and infections — also can cause knee pain.",
+                    providerInjuryBodyPart = 5,
+                    providerInjuryServiceProvider = 1
+                };
+                _dbConnection.Insert(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
+
+
+
             }
 
            
-               
-                
-                
-            
-            
-            
-            
-            
-            
-        
-        
+           
         }
             
         public Sport GetSportById(int id)
@@ -382,6 +357,18 @@ namespace TechnoTitansFinal.Services
             }
             return user;
         }
+
+
+        public User GetUserByemail(string email)
+        {
+            User user = _dbConnection.Table<User>().Where(x => x.userEmail == email).FirstOrDefault();
+            if (user != null)
+            {
+                _dbConnection.GetChildren(user, true);
+            }
+            return user;
+        }
+
 
         public void InsertClient(User user)
         {

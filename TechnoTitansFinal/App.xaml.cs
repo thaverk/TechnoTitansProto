@@ -8,7 +8,7 @@ namespace TechnoTitansFinal
         {
             InitializeComponent();
 
-            MainPage = new TellusAboutYourselfPage();
+            MainPage = new AppShell();
         }
     }
 }
