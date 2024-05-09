@@ -48,7 +48,6 @@ namespace TechnoTitansFinal.Services
             SeedClient();
         }
 
-        ProviderInjury? injury;
         TreatmentAction? action;
         TreatmentFrequency? frequency;
         public List<string> sports = new List<string> { "Cricket", "Soccer", "Netball", "Athletics", "Rugby" };
@@ -187,70 +186,87 @@ namespace TechnoTitansFinal.Services
                     treatmentName = "Sprained ankle Treatment",
                     treatmentDescription = "It 2 day treatment plan that will help you recover and heal the sprained ankle",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1,
                     treatmentAction = 1
                 };
 
                 _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
+                AddTreatmentToProvider(provider, treatment);
+
+
+                ProviderInjury injury = new()
+                {
+                    providerInjuryName = "Sprained Ankle",
+                    providerInjuryDescription = "A sprained ankle is an injury that occurs when you roll, twist or turn your ankle in an awkward way. This can stretch or tear the tough bands of tissue (ligaments) that help hold your ankle bones together.",
+                    providerInjuryBodyPart = 1
+                };
+                _dbConnection.Insert(injury);
+                AddInjuryToProviderAndTreatment(provider, treatment, injury);
 
                 treatment = new()
                 {
                     treatmentName = "Broken Wrist Treatment",
                     treatmentDescription = "It 3 day treatment plan that will help you recover and heal the broken wrist",
                     treatmentType = 1,
-                    treatmentServiceProvider = 1,
                     treatmentAction = 2
 
                 };
                 _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
+                AddTreatmentToProvider(provider, treatment);
 
-                injury = new()
-                {
-                    providerInjuryName = "Sprained Ankle",
-                    providerInjuryDescription = "A sprained ankle is an injury that occurs when you roll, twist or turn your ankle in an awkward way. This can stretch or tear the tough bands of tissue (ligaments) that help hold your ankle bones together.",
-                    providerInjuryBodyPart = 1,
-                    providerInjuryServiceProvider = 1
-                };
-                _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
 
                 injury = new()
                 {
                     providerInjuryName = "Broken Wrist",
                     providerInjuryDescription = "A broken wrist is a break or crack in one or more of the bones of your wrist. The most common fractures involve the radius and ulna bones in your forearm.",
-                    providerInjuryBodyPart = 2,
-                    providerInjuryServiceProvider = 1
+                    providerInjuryBodyPart = 2
                 };
                 _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+                AddInjuryToProviderAndTreatment(provider, treatment, injury);
+
+
+                treatment = new()
+                {
+                    treatmentName = "Neck Strain Treatment",
+                    treatmentDescription = "It 4 day treatment plan that will help you recover and heal the neck strain",
+                    treatmentType = 1,
+                    treatmentAction = 3
+                };
+                _dbConnection.Insert(treatment);
+                AddTreatmentToProvider(provider, treatment);
+
 
                 injury = new()
                 {
                     providerInjuryName = "Neck Strain",
                     providerInjuryDescription = "A neck strain is an injury to the muscles and tendons that support and move the head and neck. A neck strain is often caused by an accident or trauma, such as a car crash or a fall.",
-                    providerInjuryBodyPart = 3,
-                    providerInjuryServiceProvider = 1
+                    providerInjuryBodyPart = 3
                 };
                 _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+                AddInjuryToProviderAndTreatment(provider, treatment, injury);
+
+
+                treatment = new()
+                {
+                    treatmentName = "Back Pain Treatment",
+                    treatmentDescription = "It 5 day treatment plan that will help you recover and heal the back pain",
+                    treatmentType = 1,
+                    treatmentAction = 4
+                };
+                _dbConnection.Insert(treatment);
+                AddTreatmentToProvider(provider, treatment);
 
                 injury = new()
                 {
                     providerInjuryName = "Back Pain",
                     providerInjuryDescription = "Back pain is one of the most common medical problems, affecting 8 out of 10 people at some point during their lives. Back pain can range from a dull, constant ache to a sudden, sharp pain.",
-                    providerInjuryBodyPart = 4,
-                    providerInjuryServiceProvider = 1
+                    providerInjuryBodyPart = 4
                 };
                 _dbConnection.Insert(injury);
-                treatment.treatmentInjury.Add(injury);
-                provider.serviceProviderInjuries.Add(injury);
+                AddInjuryToProviderAndTreatment(provider, treatment, injury);
 
-                injury = new()
+
+                /*
+                 * injury = new()
                 {
                     providerInjuryName = "Knee Pain",
                     providerInjuryDescription = "Knee pain is a common complaint that affects people of all ages. Knee pain may be the result of an injury, such as a ruptured ligament or torn cartilage. Medical conditions — including arthritis, gout and infections — also can cause knee pain.",
@@ -260,47 +276,26 @@ namespace TechnoTitansFinal.Services
                 _dbConnection.Insert(injury);
                 treatment.treatmentInjury.Add(injury);
                 provider.serviceProviderInjuries.Add(injury);
-            
 
-                
-               
-                 
 
-                 
 
-               treatment = new()
+
+
+
+
+
+
+
+
+
+
+                action = new()
                 {
-                    treatmentName = "Neck Strain Treatment",
-                    treatmentDescription = "It 4 day treatment plan that will help you recover and heal the neck strain",
-                    treatmentType = 1,
-                    treatmentServiceProvider = 1,
-                    treatmentAction = 3
-               };
-                _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
-
-               treatment = new()
-                {
-                    treatmentName = "Back Pain Treatment",
-                    treatmentDescription = "It 5 day treatment plan that will help you recover and heal the back pain",
-                    treatmentType = 1,
-                    treatmentServiceProvider = 1,
-                   treatmentAction = 4
-
-               };
-
-
-                _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
-                
-
-               action = new()
-               {
                     treatmentActionProviderInjury = "Sprained Ankle",
-                    treatmentActionStepAction = { "Rest your ankle and do not walk much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury","Keep the foot elevated while sitting or lying down" },
+                    treatmentActionStepAction = { "Rest your ankle and do not walk much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the foot elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                    
+
                 };
                 _dbConnection.Insert(action);
 
@@ -310,27 +305,27 @@ namespace TechnoTitansFinal.Services
                 action = new()
                 {
                     treatmentActionProviderInjury = "Broken Wrist",
-                    treatmentActionStepAction =  { "Rest your wrist and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the wrist elevated while sitting or lying down" },
+                    treatmentActionStepAction = { "Rest your wrist and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the wrist elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                   
+
                 };
                 _dbConnection.Insert(action);
 
-                action =new()
+                action = new()
                 {
                     treatmentActionProviderInjury = "Neck Strain",
                     treatmentActionStepAction = { "Rest your neck and do not use it much", "Put some ice on the swelling to reduce it", "Compression can help control swelling as well as immobilize and support your injury", "Keep the neck elevated while sitting or lying down" },
                     treatmentActionStepOrder = 1,
                     treatmentActionFrequency = 1,
-                    
+
                 };
                 _dbConnection.Insert(action);
 
                 frequency = new()
                 {
                     treatmentFreqDescription = "Daily",
-                   
+
                 };
                 _dbConnection.Insert(frequency);
 
@@ -347,28 +342,42 @@ namespace TechnoTitansFinal.Services
 
                 };
                 _dbConnection.Insert(frequency);
-            
-                
-                
-            
-            
-            
+                */
+
+
+
+
+
             }
 
-           
-               
-                
-                
-            
-            
-            
-            
-            
-            
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
         }
-            
+
+        public void AddInjuryToProviderAndTreatment(Provider provider, Treatment treatment, ProviderInjury injury)
+        {
+            treatment.treatmentInjury.Add(injury);
+            _dbConnection.UpdateWithChildren(treatment);
+            provider.serviceProviderInjuries.Add(injury);
+            _dbConnection.UpdateWithChildren(provider);
+        }
+
+        public void AddTreatmentToProvider(Provider provider, Treatment treatment)
+        {
+            provider.serviceProviderTreatments.Add(treatment);
+            _dbConnection.UpdateWithChildren(provider);
+        }
+
         public Sport GetSportById(int id)
         {
             Sport sport = _dbConnection.Table<Sport>().Where(x => x.sportID == id).FirstOrDefault();
@@ -386,6 +395,14 @@ namespace TechnoTitansFinal.Services
                 _dbConnection.GetChildren(user, true);
             }
             return user;
+        }
+
+        public Treatment GetTreatmentById(int id)
+        {
+            Treatment treatment = _dbConnection.Table<Treatment>().Where(x => x.treatmentID == id).FirstOrDefault();
+            if (treatment != null)
+                _dbConnection.GetChildren(treatment, true);
+            return treatment;
         }
 
         public void InsertClient(User user)

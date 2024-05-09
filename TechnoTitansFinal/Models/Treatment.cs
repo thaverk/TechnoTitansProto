@@ -20,7 +20,7 @@ namespace TechnoTitansFinal.Models
         public int treatmentType { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<ProviderInjury>? treatmentInjury { get; set; }
+        public List<ProviderInjury> treatmentInjury { get; set; }
         
         public Treatment() { treatmentInjury = new(); }
 
