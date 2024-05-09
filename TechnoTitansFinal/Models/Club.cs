@@ -20,10 +20,10 @@ namespace TechnoTitansFinal.Models
         public int clubLocation { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Sport>? clubSports { get; set; }
+        public List<Sport> clubSports { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<User>? clubUsers { get; set; }
+        public List<User> clubUsers { get; set; }
 
         public Club() 
         {

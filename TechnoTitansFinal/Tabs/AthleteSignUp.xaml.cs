@@ -20,7 +20,8 @@ public partial class AthleteSignUp : ContentPage
 	{
         db = new LocalDb();
         InitializeComponent();
-	}
+        
+    }
 
 	public void SignUp_Clicked(object sender, EventArgs e)
     {

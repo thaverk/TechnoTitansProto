@@ -17,12 +17,16 @@ public partial class TellusAboutYourselfPage : ContentPage
 
     public TellusAboutYourselfPage()
 	{
-		
+        InitializeComponent();
         db = new LocalDb();
+
+        db.GetUserById(1);
+        db.GetSportById(1);
+        db.GetTreatmentById(1);
+
         Routing.RegisterRoute("AthleteSignUp", typeof(AthleteSignUp));
         Routing.RegisterRoute("CoachSignUp", typeof(CoachSignUp));
         Routing.RegisterRoute("ProviderSignUp", typeof(ProviderSignUp));
-        InitializeComponent();
        
     }
 

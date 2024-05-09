@@ -48,8 +48,8 @@ namespace TechnoTitansFinal.Services
             SeedClient();
         }
 
-        TreatmentAction? action;
-        TreatmentFrequency? frequency;
+        //TreatmentAction? action;
+        //TreatmentFrequency? frequency;
         public List<string> sports = new List<string> { "Cricket", "Soccer", "Netball", "Athletics", "Rugby" };
         public List<string> bodyParts = new List<string> { "Ankle", "Wrist", "Neck", "Back", "Knee" };
         public void SeedClient()
@@ -367,7 +367,7 @@ namespace TechnoTitansFinal.Services
         public void AddInjuryToProviderAndTreatment(Provider provider, Treatment treatment, ProviderInjury injury)
         {
             treatment.treatmentInjury.Add(injury);
-            _dbConnection.UpdateWithChildren(treatment);
+             _dbConnection.UpdateWithChildren(treatment);
             provider.serviceProviderInjuries.Add(injury);
             _dbConnection.UpdateWithChildren(provider);
         }
@@ -392,7 +392,8 @@ namespace TechnoTitansFinal.Services
             User user = _dbConnection.Table<User>().Where(x => x.userID == id).FirstOrDefault();
             if (user != null)
             {
-                _dbConnection.GetChildren(user, true);
+                //_dbConnection.GetWithAllChildren(user, true);
+                _dbConnection.Get
             }
             return user;
         }
