@@ -48,31 +48,72 @@ namespace TechnoTitansFinal.Services
             SeedClient();
         }
 
-        ProviderInjury injury;
-        Treatment treatment;
-        Provider provider;
-        TreatmentAction action;
-        TreatmentFrequency frequency;
+        ProviderInjury? injury;
+        TreatmentAction? action;
+        TreatmentFrequency? frequency;
         public List<string> sports = new List<string> { "Cricket", "Soccer", "Netball", "Athletics", "Rugby" };
         public List<string> bodyParts = new List<string> { "Ankle", "Wrist", "Neck", "Back", "Knee" };
         public void SeedClient()
         {
+
+            if (_dbConnection.Table<BodyPart>().Count() == 0)
+            {
+                foreach (var x in bodyParts)
+                {
+                    BodyPart bodyPart = new()
+                    { bodyPartName = x, bodyPartDescription = $"It's the {x}" };
+                    _dbConnection.Insert(bodyPart);
+                }
+            }
+
+            if (_dbConnection.Table<Sport>().Count() < sports.Count)
+            {
+                foreach (var x in sports)
+                {
+                    Sport sport = new()
+                    {
+                        sportName = x,
+                        sportDescription = $"It's {x}"
+                    };
+                    _dbConnection.Insert(sport);
+                }
+            }
+
             if (_dbConnection.Table<TreatmentType>().Count()==0) 
             {
                 TreatmentType type = new()
                 {
-                    treatmentTypeName = "Current Treatment", treatmentTypeDescription = "Treatment to follow during Rehabilitation",
-
+                    treatmentTypeName = "Current Treatment", 
+                    treatmentTypeDescription = "Treatment to follow during Rehabilitation",
                 };
                 _dbConnection.Insert(type);
 
                 type = new()
                 {
-                    treatmentTypeName = "Post Treatment", treatmentTypeDescription = "Treatment to follow after Rehabilitation, to recover and strengthen the damaged area",
-
+                    treatmentTypeName = "Post Treatment", 
+                    treatmentTypeDescription = "Treatment to follow after Rehabilitation, to recover and strengthen the damaged area",
                 };
             
                 _dbConnection.Insert(type);
+            }
+
+            if (_dbConnection.Table<UserType>().Count() == 0)
+            {
+                UserType userType = new()
+                {
+                    userTypeName = "Athlete",
+                    userTypeDetails = "Is Athlete",
+                    isCoach = false
+                };
+                _dbConnection.Insert(userType);
+
+                userType = new()
+                {
+                    userTypeName = "Coach",
+                    userTypeDetails = "Is Coach",
+                    isCoach = true
+                };
+                _dbConnection.Insert(userType);
             }
 
             if (_dbConnection.Table<ServiceType>().Count() == 0)
@@ -83,6 +124,7 @@ namespace TechnoTitansFinal.Services
                 };
                 _dbConnection.Insert(service);
             }
+
             if (_dbConnection.Table<AddressLocation>().Count() == 0)
             {
                 AddressLocation location = new()
@@ -99,45 +141,17 @@ namespace TechnoTitansFinal.Services
                 _dbConnection.Insert(location);
             }
 
-            if (_dbConnection.Table<BodyPart>().Count() == 0)
-            {
-                foreach (var x in bodyParts)
-                {
-                    BodyPart bodyPart = new()
-                    { bodyPartName = x, bodyPartDescription = $"It's the {x}" };
-                    _dbConnection.Insert(bodyPart);
-                }
-            }
-
             if (_dbConnection.Table<Club>().Count() == 0)
             {    
                 Club club = new()
                 {
-                    clubName = "Cape Town Soccer", clubDescription = "Soccer club In The Heart Of Cape Town", clubLocation = 1,
-                   
+                    clubName = "Cape Town Soccer", 
+                    clubDescription = "Soccer club In The Heart Of Cape Town", 
+                    clubLocation = 1,
                 };
                 _dbConnection.Insert(club);
             }
-
-            if (_dbConnection.Table<UserType>().Count() == 0)
-            {
-                UserType userType = new()
-                {
-                    userTypeName = "Athlete", 
-                    userTypeDetails = "Is Athlete", 
-                    isCoach = false
-                };
-                _dbConnection.Insert(userType);
-
-                userType = new()
-                {
-                    userTypeName = "Coach",
-                    userTypeDetails = "Is Coach",
-                    isCoach = true
-                };
-                _dbConnection.Insert(userType);
-            }
-
+            
             if (_dbConnection.Table<User>().Count() == 0)
             {
                 User user = new()
@@ -155,21 +169,43 @@ namespace TechnoTitansFinal.Services
                 _dbConnection.Insert(user);
             }
 
-            if (_dbConnection.Table<Sport>().Count() < sports.Count)
-            {
-                foreach (var x in sports)
-                {
-                    Sport sport = new()
-                    {
-                        sportName = x,
-                        sportDescription = $"It's {x}"
-                    };
-                    _dbConnection.Insert(sport);
-                }
-            }
-
             if (_dbConnection.Table<ProviderInjury>().Count() == 0)
             {
+
+                Provider provider = new()
+                {
+                    serviceProviderCompanyName = "Lyno Therapy",
+                    serviceProviderPractitionerName = "Jane",
+                    serviceProviderPractitionerSurname = "Doe",
+                    serviceProviderPractitionerEmail = "jane.lyno@outlook.com",
+                    serviceProviderPractitionerPhoneNumber = "0115551234",
+                };
+                _dbConnection.Insert(provider);
+
+                Treatment treatment = new()
+                {
+                    treatmentName = "Sprained ankle Treatment",
+                    treatmentDescription = "It 2 day treatment plan that will help you recover and heal the sprained ankle",
+                    treatmentType = 1,
+                    treatmentServiceProvider = 1,
+                    treatmentAction = 1
+                };
+
+                _dbConnection.Insert(treatment);
+                provider.serviceProviderTreatments.Add(treatment);
+
+                treatment = new()
+                {
+                    treatmentName = "Broken Wrist Treatment",
+                    treatmentDescription = "It 3 day treatment plan that will help you recover and heal the broken wrist",
+                    treatmentType = 1,
+                    treatmentServiceProvider = 1,
+                    treatmentAction = 2
+
+                };
+                _dbConnection.Insert(treatment);
+                provider.serviceProviderTreatments.Add(treatment);
+
                 injury = new()
                 {
                     providerInjuryName = "Sprained Ankle",
@@ -178,8 +214,8 @@ namespace TechnoTitansFinal.Services
                     providerInjuryServiceProvider = 1
                 };
                 _dbConnection.Insert(injury);
-               // treatment.treatmentInjury.Add(injury);
-               // provider.serviceProviderInjuries.Add(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
 
                 injury = new()
                 {
@@ -189,8 +225,8 @@ namespace TechnoTitansFinal.Services
                     providerInjuryServiceProvider = 1
                 };
                 _dbConnection.Insert(injury);
-                //treatment.treatmentInjury.Add(injury);
-                //provider.serviceProviderInjuries.Add(injury);
+                treatment.treatmentInjury.Add(injury);
+                provider.serviceProviderInjuries.Add(injury);
 
                 injury = new()
                 {
@@ -226,42 +262,11 @@ namespace TechnoTitansFinal.Services
                 provider.serviceProviderInjuries.Add(injury);
             
 
-                provider = new()
-                {
-                    serviceProviderCompanyName = "Lyno Therapy",
-                    serviceProviderPractitionerName = "Jane",
-                    serviceProviderPractitionerSurname = "Doe",
-                    serviceProviderPractitionerEmail = "jane.lyno@outlook.com",
-                    serviceProviderPractitionerPhoneNumber = "0115551234",
-
-
-
-                };
-                _dbConnection.Insert(provider);
+                
                
-                 treatment = new()
-                {
-                    treatmentName = "Sprained ankle Treatment",
-                    treatmentDescription = "It 2 day treatment plan that will help you recover and heal the sprained ankle",
-                    treatmentType = 1,
-                    treatmentServiceProvider = 1,
-                     treatmentAction = 1
-                 };
+                 
 
-                _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
-
-                 treatment = new()
-                {
-                    treatmentName = "Broken Wrist Treatment",
-                    treatmentDescription = "It 3 day treatment plan that will help you recover and heal the broken wrist",
-                    treatmentType = 1,
-                    treatmentServiceProvider = 1,
-                    treatmentAction = 2
-
-                };
-                _dbConnection.Insert(treatment);
-                provider.serviceProviderTreatments.Add(treatment);
+                 
 
                treatment = new()
                 {

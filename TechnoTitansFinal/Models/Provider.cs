@@ -21,16 +21,16 @@ namespace TechnoTitansFinal.Models
         public string? serviceProviderDescription { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<ServiceType>? serviceProviderServiceTypes { get; set; }
+        public List<ServiceType> serviceProviderServiceTypes { get; set; }
 
         [ForeignKey(typeof(AddressLocation))]
         public int serviceProviderLocation { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<ProviderInjury>? serviceProviderInjuries { get; set; }
+        public List<ProviderInjury> serviceProviderInjuries { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Treatment>? serviceProviderTreatments { get; set; }
+        public List<Treatment> serviceProviderTreatments { get; set; }
 
         public Provider() 
         {
